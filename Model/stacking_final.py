@@ -56,15 +56,15 @@ from sklearn import metrics
 
     # 加载模型
 model = Net()
-model.load_state_dict(torch.load('GRU_final2.pt'))
+model.load_state_dict(torch.load('GRU.pt'))
 import torch.nn.functional as F
-pre_fea, pre_id = matrix_generator('/Users/ggcl7/Desktop/AIP-dataset/DL_feature/train-all.npy')
-tes_fea, tes_id = matrix_generator('/Users/ggcl7/Desktop/AIP-dataset/DL_feature/test-all.npy')
+pre_fea, pre_id = matrix_generator('train-all.npy')
+tes_fea, tes_id = matrix_generator('test-all.npy')
 pre_dataloader = DataLoader(AIP_dataset(pre_fea, pre_id), batch_size=64, shuffle=False)
 tes_dataloader = DataLoader(AIP_dataset(tes_fea, tes_id), batch_size=64, shuffle=False)
 import torch.nn.functional as F
 from sklearn import metrics
-class_idx = 1  # 这里的1代表类别1
+class_idx = 1  
 
 
 def get_probs_and_metrics(loader, model):
@@ -75,7 +75,6 @@ def get_probs_and_metrics(loader, model):
             probabilities = F.softmax(outputs, dim=1)
             preds += torch.argmax(outputs, dim=1).tolist()
             labels += label.tolist()
-                # 保存每个样本被预测为类别1的概率
             probs += probabilities[:, class_idx].tolist()
     return probs
 
@@ -144,8 +143,8 @@ class Net2(nn.Module):
         x = self.fc2(x)
         return x
 
-pre_fea2, pre_id2 = matrix_generator('/Users/ggcl7/Desktop/AIP-dataset/DL_feature/train_aaindex.npy')
-tes_fea2, tes_id2 = matrix_generator('/Users/ggcl7/Desktop/AIP-dataset/DL_feature/test_aaindex.npy')
+pre_fea2, pre_id2 = matrix_generator('train_aaindex.npy')
+tes_fea2, tes_id2 = matrix_generator('test_aaindex.npy')
 pre_dataloader2 = DataLoader(AIP_dataset(pre_fea2, pre_id2), batch_size=64, shuffle=False)
 tes_dataloader2 = DataLoader(AIP_dataset(tes_fea2, tes_id2), batch_size=64, shuffle=False)
 model2 = Net2()
@@ -176,15 +175,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, roc_auc_score, roc_curve
 from functools import reduce
 np.set_printoptions(suppress=True)
-newfeature1 = pd.read_csv('/Users/ggcl7/Desktop/AIP_data2/feature_selected_lasso5.csv')
-newfeature2 = pd.read_csv('/Users/ggcl7/Desktop/AIP_data2/feature_selected_lasso5.csv')
-trainy=pd.read_csv('/Users/ggcl7/Desktop/AIP_data2/ALL_label.csv')
-testy=pd.read_csv('/Users/ggcl7/Desktop/AIP_data2/ALL_label.csv')
+newfeature1 = pd.read_csv('feature_selected.csv')
+newfeature2 = pd.read_csv('feature_selected.csv')
+trainy=pd.read_csv('ALL_label.csv')
+testy=pd.read_csv('ALL_label.csv')
 data_train = newfeature1.iloc[:3145, 1:]
 label_train=trainy.iloc[:3145, 2]
 data_test = newfeature2.iloc[3145:, 1:]
 label_test=testy.iloc[3145:, 2]
-ET = joblib.load('ET_AAC_CKSAAGP_PAAC_dde_lasso2.pkl')
+ET = joblib.load('ET_AAC_CKSAAGP_PAAC_dde_lasso.pkl')
 Train1 = ET.predict_proba(data_train)[:, 1]
 Train2 = get_probs_and_metrics(pre_dataloader2, model2)
 Train3 = get_probs_and_metrics(pre_dataloader, model)
