@@ -48,4 +48,4 @@ def feature_generator(file_path, temp_file_path):
     return temp_file_path + '.npy'
 
 if __name__ == '__main__':
-    feature_generator('/Users/ggcl7/Desktop/AIPstack_data/data/train.txt', '/Users/ggcl7/Desktop/AIPstack_data/data/train-all')
+    feature_generator('/Users/ggcl7/Desktop/AIP_data/data/train.txt', '/Users/ggcl7/Desktop/AIP_data/data/train-all')
