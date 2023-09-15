@@ -6,5 +6,8 @@ This AIP prediction tool developed by a team from the Chinese University of Hong
 # Dataset for this study
 We provided our dataset and you can find them [Dataset](https://github.com/GGCL7/AIP_MDL/tree/main/Dataset)
 
+# Feature generator
+We provided our code and you can find them [Feature generator](https://github.com/GGCL7/AIP_MDL/tree/main/Feature%20generator)
+
 # Use our model
 We developed three models, and you can find the pre-stored models at [Model](https://github.com/GGCL7/AIP_MDL/tree/main/Model).
