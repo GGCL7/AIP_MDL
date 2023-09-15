@@ -47,38 +47,3 @@ def AAINDEX(fastas, **kw):
 		encodings.append(code)
 
 	return encodings
-# import pandas as pd
-# import numpy as np
-# def feature_generator(file_path, temp_file_path):
-#     # pd.set_option('display.max_colwidth', 500)
-#     # pd.set_option('display.max_columns', 1000)
-#     # pd.set_option('display.width', 1000)
-#     f = open(file_path, 'r', encoding='utf-8')
-#     fasta_list = np.array(f.readlines())
-#     aa_feature_list = []
-#     # print(fasta_list)len(fasta_list)
-#     for flag in range(0, len(fasta_list), 2):
-#         fasta_str = [[fasta_list[flag].strip('\n').strip(), fasta_list[flag + 1].strip('\n').strip()]]
-#
-#         aac_output = AAINDEX(fasta_str)
-#         aac_output[1].remove(aac_output[1][0])
-#         # print(dpc_output)
-#         # dpc_feature = []
-#         aac_feature = aac_output[1][:]
-#         # print(dpc_feature)
-#         aa_feature_list.append(aac_feature)
-#     aa_feature_list = pd.DataFrame(aa_feature_list)
-#     aa_feature_list = aa_feature_list.iloc[:, :]
-#     coloumnname = []
-#     for i in range(len(aa_feature_list.columns)):
-#         x = 'AA'+str(i+1)
-#         coloumnname.append(x)
-#     # print(coloumnname)
-#     aa_feature_list.columns = coloumnname
-#     print(aa_feature_list.shape)
-#     # return aa_feature_list.to_csv(temp_file_path, sep=',')
-#
-#
-#
-# if __name__ == '__main__':
-#     feature_generator('/Users/ggcl7/Desktop/AIP-dataset/ML_dataset/test-all.txt', '/Users/ggcl7/Desktop/AIP-dataset/ML_dataset/test-allaaindex.csv')
