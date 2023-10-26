@@ -3,7 +3,7 @@ Inflammation is a biological response to harmful stimuli, aiding in maintaining 
 
 This AIP prediction tool developed by a team from the Chinese University of Hong Kong (Shenzhen)
 
-![The workflow of this study]([main/workflow.jpg])
+![The workflow of this study](https://github.com/GGCL7/AIP_MDL/blob/main/workflow.jpg)
 
 
 # Dataset for this study
